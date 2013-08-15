@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130815010312) do
+ActiveRecord::Schema.define(version: 20130815031803) do
 
   create_table "registration_accounts", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "owner_id"
+  end
+
+  add_index "registration_accounts", ["owner_id"], name: "index_registration_accounts_on_owner_id"
+
+  create_table "registration_users", force: true do |t|
+    t.string   "email"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
